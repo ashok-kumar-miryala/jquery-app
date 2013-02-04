@@ -1,0 +1,4 @@
+
+$("#district_state_id").hide();
+alert("hai");
+	

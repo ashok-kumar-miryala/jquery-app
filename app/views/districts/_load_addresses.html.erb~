@@ -1,0 +1,8 @@
+
+<% case @address.country.name %>
+<% when "USA" %>
+I am in USA
+<% else %>
+others
+<% end %>
+

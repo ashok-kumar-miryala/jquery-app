@@ -1,0 +1,9 @@
+class ApplicationController < ActionController::Base
+  protect_from_forgery
+helper_method :javascript_include_view_js //Or something similar
+def javascript_include_view_js
+    if FileTest.exists? "app/assets/javascripts/"+params[:controller]+"/"+params[:action]+".js.erb"
+        return '<script src="/assets/'+params[:controller]+'/'+params[:action]+'.js.erb" type="text/javascript"></script>'
+    end
+end
+end

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Country:</b>
+  <%= @address.country_id %>
+</p>
+
+<p>
+  <b>Add type one:</b>
+  <%= @address.add_type_one %>
+</p>
+
+<p>
+  <b>Add type two:</b>
+  <%= @address.add_type_two %>
+</p>
+
+<p>
+  <b>Add type three:</b>
+  <%= @address.add_type_three %>
+</p>
+
+<p>
+  <b>Add type four:</b>
+  <%= @address.add_type_four %>
+</p>
+
+
+<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to 'Back', addresses_path %>

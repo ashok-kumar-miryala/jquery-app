@@ -1,0 +1,37 @@
+<%= form_for(@address) do |f| %>
+  <% if @address.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address.errors.count, "error") %> prohibited this address from being saved:</h2>
+
+      <ul>
+      <% @address.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country_id %><br />
+    <%= f.collection_select :country_id, Country.order('name'), :id, :name ,{:prompt=>'Select Country'}%>
+  </div>
+  <div class="field">
+    <%= f.label :add_type_one %><br />
+    <%= f.text_field :add_type_one %>
+  </div>
+  <div class="field">
+    <%= f.label :add_type_two %><br />
+    <%= f.text_field :add_type_two %>
+  </div>
+  <div class="field">
+    <%= f.label :add_type_three %><br />
+    <%= f.text_field :add_type_three %>
+  </div>
+  <div class="field">
+    <%= f.label :add_type_four %><br />
+    <%= f.text_field :add_type_four %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

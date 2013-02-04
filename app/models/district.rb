@@ -1,0 +1,19 @@
+
+class District < ActiveRecord::Base
+
+belongs_to :country
+belongs_to :state
+
+private
+
+def request_state_and_city_validation_based_on_zipcode
+poll = true
+if poll loc = MultiGeocoder.geocode("#{self.zip_code}, US") 
+end
+
+unless loc.success errors.add(:zip_code, "Unable to geocode your location from zipcode entered.") 
+else
+errors.add(:country, "Country doesn't matches with zipcode entered") if self.country.name != loc.country.name  
+end 
+end
+end

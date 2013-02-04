@@ -1,0 +1,62 @@
+
+<%= form_for(@district) do |f| %>
+  <% if @district.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@district.errors.count, "error") %> prohibited this district from being saved:</h2>
+
+      <ul>
+      <% @district.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :country_id %><br />
+    <%= f.collection_select :country_id, Country.order('name'), :id, :name ,{:prompt=>'Select Country'}%>
+  </div>
+  <div class="field">
+   <%= f.label :state_id,:id =>"state" %><br />
+    <%= f.text_field :name%>
+  </div>
+<div class="wrapper1" style="display:none !important;"> 
+	<div class="field">
+    <%= f.label :address ,:id =>"label_address"%><br />
+    <%= f.text_field :address %>
+  </div>
+	<div class="field">
+    <%= f.label :city ,:id =>"label_city"%><br />
+    <%= f.text_field :city %>
+  </div>
+	<div class="field">
+    <%= f.label :number ,:id =>"label_number"%><br />
+    <%= f.text_field :number %>
+  </div>
+	<div class="field">
+    <%= f.label :street_name,:id =>"label_street" %><br />
+    <%= f.text_field :street_name %>
+  </div>
+	</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+$("#district_country_id").change(function () {
+ $.ajax({
+            url: '/districts/load_states',
+            type: "POST",
+            data: { 'id' : $("#district_country_id").val() }
+
+                    });
+$(".wrapper1").show();
+
+});
+
+</script>
